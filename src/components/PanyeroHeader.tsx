@@ -1,31 +1,27 @@
 
-import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Plus, Settings } from "lucide-react";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 type Props = {
-  generatorType: string;
+  title?: string;
 };
 
-const gradient =
-  "bg-gradient-to-tr from-indigo-500 via-purple-500 to-fuchsia-500";
-
-export function PanyeroHeader({ generatorType }: Props) {
+export function PanyeroHeader({ title = "CodeHub" }: Props) {
   return (
-    <header className="mb-6 relative text-center">
-      <h1 className={cn("text-4xl font-extrabold", gradient, "bg-clip-text text-transparent inline-block")}>
-        Panyero <span className="block text-lg font-semibold text-indigo-500 bg-none">
-          {generatorType}
-        </span>
-        <a
-          href="/settings"
-          title="Add/Manage Personas"
-          className="absolute top-1 right-2 text-xl duration-150 opacity-60 hover:opacity-100 text-gray-700 hover:text-indigo-500"
-        >
-          <span className="sr-only">Settings</span>
-          <ArrowRight className="inline ml-1" />
-        </a>
+    <header className="mb-6 relative flex items-center justify-between px-2 pt-4 pb-2">
+      <h1 className={cn("text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent inline-block bg-gradient-to-tr from-indigo-500 via-purple-500 to-fuchsia-500")}>
+        {title}
       </h1>
+      {/* Settings/Add Icon */}
+      <a
+        href="/settings"
+        title="Add Persona"
+        className="text-2xl p-2 rounded-lg bg-white/80 hover:bg-white shadow hover:shadow-lg transition text-gray-700 hover:text-indigo-500"
+      >
+        <Plus />
+        <span className="sr-only">Settings</span>
+      </a>
     </header>
   );
 }

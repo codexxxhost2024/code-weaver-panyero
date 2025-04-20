@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { usePersonas } from "@/hooks/usePersonas";
 import { PanyeroHeader } from "@/components/PanyeroHeader";
@@ -96,7 +95,7 @@ export default function Index() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-2 py-10">
       <div className="w-full max-w-2xl mx-auto">
-        <PanyeroHeader generatorType={persona?.title ?? "Generator"} />
+        <PanyeroHeader title="CodeHub" />
         {personasStatus?.message && (
           <div className={`rounded-lg p-3 mb-3 border ${personasStatus.type === "warning" ? "bg-yellow-50 border-yellow-300 text-yellow-800" : ""}`}>
             {personasStatus.message}
