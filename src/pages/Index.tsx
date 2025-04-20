@@ -7,6 +7,7 @@ import { PromptForm } from "@/components/PromptForm";
 import { OutputView } from "@/components/OutputView";
 import { toast } from "@/hooks/use-toast";
 import { getDatabase } from "@/lib/firebase";
+import { ref, push } from "firebase/database";
 
 // TODO: Move API key and endpoint to env/secrets if you publish!
 const OPENAI_API_KEY = "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";
@@ -74,8 +75,8 @@ export default function Index() {
     setSaving(true);
     try {
       const db = getDatabase();
-      const ref = db.ref(GENERATED_PATH);
-      await ref.push({
+      const generatedRef = ref(db, GENERATED_PATH);
+      await push(generatedRef, {
         prompt,
         output,
         type: personaKey,

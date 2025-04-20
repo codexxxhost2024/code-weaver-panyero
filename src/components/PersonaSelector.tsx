@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Select } from "@/components/ui/select";
 
 type PersonaRecord = {
   key: string;

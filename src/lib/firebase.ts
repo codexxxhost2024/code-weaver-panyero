@@ -1,8 +1,8 @@
 
-import firebase from "firebase/compat/app";
-import "firebase/compat/database";
+import { initializeApp } from "firebase/app";
+import { getDatabase as getFirebaseDatabase, Database } from "firebase/database";
 
-// From HTML config, or use your own project config here:
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDTsjYZNWFfZOESP-2QQfbD7jc5fG9FJdc",
   authDomain: "explore-malaysia-6d28d.firebaseapp.com",
@@ -14,9 +14,10 @@ const firebaseConfig = {
   measurementId: "G-5XJK1H7KWX"
 };
 
-export function getDatabase() {
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
-  return firebase.database();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Get database instance
+export function getDatabase(): Database {
+  return getFirebaseDatabase(app);
 }

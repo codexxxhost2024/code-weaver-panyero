@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { getDatabase } from "@/lib/firebase";
+import { ref, get } from "firebase/database";
 
 // Default personas go here (in place of personas.js)
 const defaultPersonaPrompts: Record<string, any> = {
@@ -39,9 +40,9 @@ export function usePersonas() {
     async function fetchCustomPersonas() {
       try {
         const db = getDatabase();
-        const ref = db.ref(CUSTOM_PERSONAS_PATH);
-        const snap = await ref.once("value");
-        const customData: any = snap.val();
+        const personasRef = ref(db, CUSTOM_PERSONAS_PATH);
+        const snapshot = await get(personasRef);
+        const customData: any = snapshot.val();
         if (!customData) {
           setStatus(null);
           return;
