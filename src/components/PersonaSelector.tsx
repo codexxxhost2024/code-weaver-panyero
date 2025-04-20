@@ -8,7 +8,7 @@ type PersonaRecord = {
 
 type Props = {
   personas: Record<string, any>;
-  value: string;
+  value: string; // Changed from a specific union type to accept any string
   onChange: (key: string) => void;
   disabled?: boolean;
 };
