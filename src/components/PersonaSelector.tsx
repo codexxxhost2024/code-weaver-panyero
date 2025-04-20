@@ -8,7 +8,7 @@ type PersonaRecord = {
 
 type Props = {
   personas: Record<string, any>;
-  value: string; // Changed from a specific union type to accept any string
+  value: string; // Must be any string, not restricted to union types
   onChange: (key: string) => void;
   disabled?: boolean;
 };
@@ -27,7 +27,7 @@ export function PersonaSelector({ personas, value, onChange, disabled }: Props) 
         id="persona"
         className="w-full rounded-lg border-2 border-gray-200 px-4 py-2 mb-2 bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 cursor-pointer text-base"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value as string)}
         disabled={disabled}
       >
         <optgroup label="Default Generators">
